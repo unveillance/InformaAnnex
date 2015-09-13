@@ -1,6 +1,6 @@
 [submodule "lib/Annex"]
 	path = lib/Annex
-	url = git@github.com:harlo/UnveillanceAnnex.git
+	url = git@github.com:unveillance/UnveillanceAnnex.git
 [submodule "lib/jpeg/jpeg-redaction"]
 	path = lib/jpeg/jpeg-redaction
 	url = git@github.com:harlo/Jpeg-Redaction-Library.git
