@@ -37,6 +37,8 @@ def preprocessImage(task):
 		uv_task.fail()
 		return
 
+	from vars import UPLOAD_RESTRICTION
+
 	if has_j3m:
 		task.put_next("J3M.locate_j3m.locate_j3m")
 
