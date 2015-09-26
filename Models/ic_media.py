@@ -69,7 +69,7 @@ class InformaCamMedia(UnveillanceDocument):
 			print "WHY DIDN'T HASH WORK?"
 			return False
 
-		import gnugp
+		import gnupg
 		from vars import ASSET_TAGS
 		from conf import getConfig, getSecrets
 
