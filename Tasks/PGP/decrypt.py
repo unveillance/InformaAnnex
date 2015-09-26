@@ -32,6 +32,8 @@ def decrypt(uv_task):
 		print "\n\n************** %s [ERROR] ******************\n" % task_tag
 		uv_task.fail(message=err_msg)
 		return
+
+	gpg_dir = getSecrets("gpg_dir")
 	
 	# save as task.pgp_file.decrypted or whatever	
 	import os
@@ -49,7 +51,7 @@ def decrypt(uv_task):
 	print "SAVING DECRYPTED ASSET TO %s IF SUCCESSFUL" % save_as
 
 	with settings(hide('everything'), warn_only=True):
-		d_cmd = "gpg --yes --no-tty --passphrase %s --output %s --decrypt %s" % (gpg_pwd,
+		d_cmd = "gpg --yes --no-tty --homedir=%s --passphrase %s --output %s --decrypt %s" % (gpg_dir, gpg_pwd,
 		os.path.join(ANNEX_DIR, save_as), os.path.join(ANNEX_DIR, uv_task.pgp_file))
 
 		decrypted = local(d_cmd)
