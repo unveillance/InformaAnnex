@@ -1,6 +1,13 @@
 #! /bin/bash
 THIS_DIR=`pwd`
 
+git submodule update --init --recursive
+cd lib/Annex
+git checkout master
+cd lib/Core
+git checkout master
+cd $THIS_DIR
+
 if [ $# -eq 0 ]
 then
 	echo "{}" > $THIS_DIR/lib/Annex/conf/informa.secrets.json
