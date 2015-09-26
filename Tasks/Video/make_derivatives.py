@@ -64,7 +64,7 @@ def makeDerivatives(task):
 		
 		video.addFile(asset_path, None)
 		
-		ogv_asset_path = video.addAsset(None, asset_path.replace(".mp4", ".ogv"),
+		ogv_asset_path = video.addAsset(None, "%s_%s.ogv" % (label, video.file_name),
 			tags=[ASSET_TAGS['M_DERIV'], ASSET_TAGS[label.upper()]],
 			description="derivative of video in %s resolution (ogv)" % label)
 		
@@ -77,7 +77,7 @@ def makeDerivatives(task):
 			
 			video.addFile(ogv_asset_path, None)
 	
-	asset_path = video.addAsset(None, "thumb_%s.jpg" % video.file_name[:-4],
+	asset_path = video.addAsset(None, "thumb_%s.jpg" % video.file_name,
 		tags=[ASSET_TAGS['M_DERIV'], ASSET_TAGS['THUMB']],
 		description="derivative of video in thumb resolution")
 	
