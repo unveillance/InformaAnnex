@@ -1,4 +1,4 @@
-import os, json, gnupg, re, yaml, gzip
+import os, json, gnupg, re, yaml, gzip, getpass
 import xml.etree.ElementTree as ET
 
 from sys import exit, argv
@@ -244,7 +244,8 @@ if __name__ == "__main__":
 	if len(sec_config['gpg_priv_key']) == 0:
 		rm_key = True
 		sec_config['gpg_priv_key'] = os.path.join(conf_dir, "gpg_priv_key.sec")
-		sec_config['gpg_pwd'] = prompt("Enter your passphrase for your GPG key:")
+		sec_config['gpg_pwd'] = getpass.getpass(prompt="Enter your passphrase for your GPG key:")
+		
 		with open(os.path.join(base_dir, "ickeygen"), 'wb+') as KEYGEN:
 			KEYGEN.write("Key-Type:RSA\n")
 			KEYGEN.write("Key-Length:4096\n")
@@ -261,7 +262,7 @@ if __name__ == "__main__":
 			sleep(5)
 
 	if 'gpg_pwd' not in sec_config.keys():
-		sec_config['gpg_pwd'] = prompt("What is the password to your GPG key?")
+		sec_config['gpg_pwd'] = getpass.getpass(prompt="What is the password to your GPG key?")
 		
 	gpg = gnupg.GPG(homedir=sec_config['gpg_dir'])
 	with open(sec_config['gpg_priv_key'], 'rb') as PRIV_KEY:
